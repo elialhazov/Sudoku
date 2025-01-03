@@ -108,8 +108,8 @@ const SudokuBoard = () => {
             } else {
                 setBackendError('');
             }
-        } catch (error) {
-            console.error('Error communicating with the backend.',error);
+        } catch {
+            setBackendError('Error communicating with the backend.');
         }
     };
 
