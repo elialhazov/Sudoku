@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import ChatAssistant from './ChatAssistant';
 import '../Styles/SudokuBoard.css';
+import '../Styles/ChatAssistant.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SudokuCell from './SudokuCell.jsx';
 import ResetBoard from './ResetBoard.jsx';
@@ -8,7 +10,6 @@ import Timer from './Timer.jsx';
 import '../Styles/ResetBoard.css';
 import '../Styles/SolveStepButton.css';
 import '../Styles/Timer.css';
-import ErrorHandlingInterface from './ErrorHandlingInterface.jsx';
 
 const SudokuBoard = () => {
     const generateBoard = () => {
@@ -108,7 +109,7 @@ const SudokuBoard = () => {
                 setBackendError('');
             }
         } catch (error) {
-            setBackendError('Error communicating with the backend.');
+            console.error('Error communicating with the backend.',error);
         }
     };
 
@@ -212,6 +213,10 @@ const SudokuBoard = () => {
                     End Game
                 </button>
             </div>
+            <div className="chat-container mt-4">
+                <ChatAssistant boardState={board} />
+            </div>
+
 
             <footer className="footer mt-5">
                 <p className="text-muted">© 2024 Sudoku Pro | By Michael Miron and Eli Alhazov :)</p>
